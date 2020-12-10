@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LedocHomeApp.Views.EquipmentDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="EquipmentId" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.EquipmentId}" FontSize="Small"/>
+            <Label Text="Name" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.Name}" FontSize="Small"/>
+            <Label Text="Make" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.Make}" FontSize="Small"/>
+            <Label Text="Mobile" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.Mobile}" FontSize="Small"/>
+            <Label Text="Expiration date" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.ExpirationDate}" FontSize="Small"/>
+            <Label Text="Responsible" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.Responsible}" FontSize="Small"/>
+            <Label Text="Date of purchase" FontSize="Medium"/>
+            <Label Text="{Binding Equipment.DateOfPurchase}" FontSize="Small"/>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

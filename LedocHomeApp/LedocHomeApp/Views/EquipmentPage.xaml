@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LedocHomeApp.Views.EquipmentPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="EquipmentListView"
+                      ItemsSource="{Binding Equipments}"
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="True"
+                      ItemSelected="OnEquipmentSelected"
+                      IsPullToRefreshEnabled="True"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding EquipmentId}"/>
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Make}"/>
+                                <Label Text="{Binding Mobile}"/>
+                                <Label Text="{Binding DateExpiration}"/>
+                                <Label Text="{Binding Responsible}"/>
+                                <Label Text="{Binding DateOfPurchase}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

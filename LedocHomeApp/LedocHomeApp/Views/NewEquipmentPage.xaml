@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LedocHomeApp.Views.NewEquipmentPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Equipment_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Name" FontSize="Medium"/>
+            <Entry Text="{Binding Equipment.Name}" FontSize="Small"/>
+            <Label Text="Make" FontSize="Medium"/>
+            <Entry Text="{Binding Equipment.Make}" FontSize="Small"/>
+            <Label Text="Date of Expiration" FontSize="Medium"/>
+            <Entry Text="{Binding Equipment.DateExpiration}" FontSize="Small"/>
+            <Label Text="Responsible" FontSize="Medium"/>
+            <Entry Text="{Binding Equipment.Responsible}" FontSize="Small"/>
+            <Label Text="Date of Purchase" FontSize="Medium"/>
+            <Entry Text="{Binding Equipment.DateOfPurchase}" FontSize="Small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
