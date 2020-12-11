@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using LedocHomeApp.Models;
+using LedocHomeApp.ViewModels;
 using LedocHomeApp.Views;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -15,28 +18,22 @@ namespace LedocHomeApp.ViewModels
     {
         public ObservableCollection<Equipment> Equipments { get; set; }
         public Command LoadEquipmentsCommand { get; set; }
+        private static readonly HttpClient client = new HttpClient();
 
         public EquipmentViewModel()
         {
             Equipments = new ObservableCollection<Equipment>();
             LoadEquipmentsCommand = new Command(async () => await ExecuteLoadEquipmentsCommand());
 
-            MessagingCenter.Subscribe<NewEquipmentPage, Equipment>(this, "AddEquipment", async (obj, equipment) =>
-            {
-                var newEquipment = equipment as Equipment;
-                Equipments.Add(newEquipment);
-                await DataStore.AddItemAsync(newEquipment);
-            });
+            //MessagingCenter.Subscribe<NewEquipmentPage, Equipment>(this, "AddEquipment", async (obj, equipment) =>
+            //{
+            //    var newEquipment = equipment as Equipment;
+            //    Equipments.Add(newEquipment);
+            //    await DataStore.AddItemAsync(newEquipment);
+            //});
         }
 
-        private async void PostEquipment()
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://restserviceledochome.azurewebsites.net/api/equipments/add");
-
-            //https://forums.xamarin.com/discussion/94945/how-to-post-data-to-rest-api-json 
-            string jsonData = @"{""name"" : ""make"" : ""DateExpiration"}"
-        }
+        
 
         async Task ExecuteLoadEquipmentsCommand()
         {
@@ -51,5 +48,43 @@ namespace LedocHomeApp.ViewModels
                 }
                 }
             }
-    }
+
+
+
+        public async Task PostEquipmentTask(Equipment equipment)
+        {
+            var client = new HttpClient();
+
+            var json = JsonConvert.SerializeObject(equipment);
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await client.PostAsync("https://restserviceledochome.azurewebsites.net/api/equipments/",
+                content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Data saved successfully");
+            }
+            else
+            {
+                Debug.WriteLine("An error occured while posting data");
+            }
+
+            //client.BaseAddress = new Uri("https://restserviceledochome.azurewebsites.net/api/equipments/add");
+
+        }
+
+        public async Task PutEquipmentTask(Equipment equipment)
+        {
+            var client = new HttpClient();
+
+            var json = JsonConvert.SerializeObject(equipment);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await client.PutAsync("https://restserviceledochome.azurewebsites.net/api/equipments/",
+                content);
+        }
+}
 }

@@ -1,11 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:LedocHomeApp.ViewModels;assembly=LedocHomeApp"
              x:Class="LedocHomeApp.Views.NewEquipmentPage">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Clicked="Save_Equipment_Clicked"></ToolbarItem>
-    </ContentPage.ToolbarItems>
-    <ContentPage.Content>
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.BindingContext>
+        <viewModels:NewEquipmentViewModel/>
+    </ContentPage.BindingContext>
+
+<StackLayout>
+        <Label Text="Name"/>
+        <Entry Text="{Binding Name}"/>
+        <Label Text="Make"/>
+        <Entry Text="{Binding Make}"/>
+        <Label Text="Mobile"/>
+        <Entry Text="{Binding Mobile}"/>
+        <Label Text="DateExpiration"/>
+        <Entry Text="{Binding DateExpiration}"/>
+        <Label Text="Responsible"/>
+        <Entry Text="{Binding Responsible}"/>
+        <Label Text="DateOfPurchase"/>
+        <Entry Text="{Binding DateOfPurchase}"/>    
+
+    <Button Command="{Binding AddCommand}" Text="Tilføj udstyr"></Button>
+</StackLayout>
+
+    </ContentPage>
+    <!--<ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Name" FontSize="Medium"/>
             <Entry Text="{Binding Equipment.Name}" FontSize="Small"/>
@@ -18,5 +41,6 @@
             <Label Text="Date of Purchase" FontSize="Medium"/>
             <Entry Text="{Binding Equipment.DateOfPurchase}" FontSize="Small"/>
         </StackLayout>
+    
     </ContentPage.Content>
-</ContentPage>
+</ContentPage>-->
