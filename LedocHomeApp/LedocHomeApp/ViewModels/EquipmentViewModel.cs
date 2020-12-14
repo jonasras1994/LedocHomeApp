@@ -56,22 +56,23 @@ namespace LedocHomeApp.ViewModels
             var client = new HttpClient();
 
             var json = JsonConvert.SerializeObject(equipment);
+            Debug.WriteLine(json);
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
+            
             var response = await client.PostAsync("https://restserviceledochome.azurewebsites.net/api/equipments/",
                 content);
-
+            
             if (response.IsSuccessStatusCode)
             {
                 Debug.WriteLine("Data saved successfully");
             }
             else
             {
-                Debug.WriteLine("An error occured while posting data");
+                Debug.WriteLine("An error occured while posting data " + response.StatusCode.ToString());
             }
 
-            //client.BaseAddress = new Uri("https://restserviceledochome.azurewebsites.net/api/equipments/add");
+            //client.BaseAddress = new Uri("https://restserviceledochome.azurewebsites.net/api/equipments/");
 
         }
 
@@ -86,5 +87,23 @@ namespace LedocHomeApp.ViewModels
             var response = await client.PutAsync("https://restserviceledochome.azurewebsites.net/api/equipments/",
                 content);
         }
-}
+
+        //Equipment _selectedEquipment;
+        //public Equipment SelectedEquipment
+        //{
+        //    get
+        //    {
+        //        return _selectedEquipment;
+        //    }
+        //    set
+        //    {
+        //        _selectedEquipment = value;
+        //        if (value != null)
+        //        {
+        //            Navigation.PushAsync(new NewEquipmentPage(SelectedEquipment));
+        //        }
+        //        OnPropertyChanged();
+        //    }
+        //}
+    }
 }
