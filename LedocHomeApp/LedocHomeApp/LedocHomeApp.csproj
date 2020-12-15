@@ -25,7 +25,7 @@
     <EmbeddedResource Update="Views\DocumentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditOrDeleteEquipmentPage.xaml">
+    <EmbeddedResource Update="Views\EditEquipmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EquipmentDetailPage.xaml">

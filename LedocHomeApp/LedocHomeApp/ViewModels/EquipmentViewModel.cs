@@ -33,7 +33,7 @@ namespace LedocHomeApp.ViewModels
             //});
         }
 
-        
+
 
         async Task ExecuteLoadEquipmentsCommand()
         {
@@ -46,8 +46,8 @@ namespace LedocHomeApp.ViewModels
                 {
                     Equipments.Add(e);
                 }
-                }
             }
+        }
 
 
 
@@ -70,9 +70,6 @@ namespace LedocHomeApp.ViewModels
             {
                 Debug.WriteLine("An error occured while posting data");
             }
-
-            //client.BaseAddress = new Uri("https://restserviceledochome.azurewebsites.net/api/equipments/add");
-
         }
 
         public async Task PutEquipmentTask(Equipment equipment)
@@ -86,5 +83,22 @@ namespace LedocHomeApp.ViewModels
             var response = await client.PutAsync("https://restserviceledochome.azurewebsites.net/api/equipments/",
                 content);
         }
-}
+        //Equipment _selectedEquipment;
+        //public Equipment SelectedEquipment
+        //{
+        //    get
+        //    {
+        //        return _selectedEquipment;
+        //    }
+        //    set
+        //    {
+        //        _selectedEquipment = value;
+        //        if (value != null)
+        //        {
+        //            Navigation.PushAsync(new NewEquipmentPage(SelectedEquipment));
+        //        }
+        //        OnPropertyChanged();
+        //    }
+        //}
+    }
 }

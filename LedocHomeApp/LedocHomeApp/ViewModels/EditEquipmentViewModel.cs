@@ -7,21 +7,27 @@ using Xamarin.Forms;
 
 namespace LedocHomeApp.ViewModels
 {
-    public class EditEquipmentViewModel
+    public class EditEquipmentViewModel : BaseViewModel
     {
         EquipmentViewModel _equipmentViewModel = new EquipmentViewModel();
-        
+
         public Equipment Equipment { get; set; }
 
-        public ICommand PutCommand
+        //public ICommand EditCommand
+        //{
+        //    get
+        //    {
+        //        return new Command(async () =>
+        //        {
+        //            await _equipmentViewModel.PutEquipmentTask(Equipment);
+        //        });
+        //    }
+        //}
+
+        public EditEquipmentViewModel(Equipment equipment = null)
         {
-            get
-            {
-                return new Command(async () =>
-                {
-                    await _equipmentViewModel.PutEquipmentTask(Equipment);
-                });
-            }
+            Title = equipment?.Name;
+            Equipment = equipment;
         }
     }
 }
