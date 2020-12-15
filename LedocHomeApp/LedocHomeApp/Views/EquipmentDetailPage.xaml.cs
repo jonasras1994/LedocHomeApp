@@ -26,11 +26,29 @@ namespace LedocHomeApp.Views
 
             var equipment = new Equipment
             {
-                //Name = ""
+
             };
 
                 viewModel = new EquipmentDetailViewModel(equipment);
             BindingContext = viewModel;
         }
+
+        async void EditEquipment_Clicked(object sender, EventArgs e)
+        {
+            //var item = args.SelectedItem as Equipment;
+
+            await Navigation.PushModalAsync(new NavigationPage(new EditOrDeleteEquipmentPage()));
+        }
+
+        //async void OnEquipmentSelected(object sender, SelectedItemChangedEventArgs args)
+        //{
+        //    var equipment = args.SelectedItem as Equipment;
+        //    if (equipment == null)
+        //        return;
+
+        //    await Navigation.PushAsync(new EditOrDeleteEquipmentPage(new EditEquipmentViewModel(equipment)));
+
+        //    EquipmentPage.SelectedItem = null;
+        //}
     }
 }

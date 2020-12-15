@@ -13,15 +13,41 @@ namespace LedocHomeApp.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditOrDeleteEquipmentPage : ContentPage
 	{
-		public EditOrDeleteEquipmentPage (Equipment equipment)
+	    EditEquipmentViewModel viewModel;
+		public EditOrDeleteEquipmentPage (EditEquipmentViewModel viewModel)
 		{
 			InitializeComponent ();
 
-		    var editEquipmentViewModel = new EditEquipmentViewModel();
+		    //var editEquipmentViewModel = new EditEquipmentViewModel();
 
-		    editEquipmentViewModel.Equipment = equipment;
+		    //editEquipmentViewModel.Equipment = equipment;
 
-		    BindingContext = editEquipmentViewModel;
+		    BindingContext = this.viewModel = viewModel;
 		}
-	}
+
+	    public EditOrDeleteEquipmentPage()
+	    {
+            InitializeComponent();
+
+	        var equipment = new Equipment
+	        {
+
+	        };
+
+            viewModel = new EditEquipmentViewModel(equipment);
+	        BindingContext = viewModel;
+	    }
+
+
+	    //async void OnEquipmentSelected(object sender, SelectedItemChangedEventArgs args)
+	    //{
+	    //    var equipment = args.SelectedItem as Equipment;
+	    //    if (equipment == null)
+	    //        return;
+
+	    //    await Navigation.PushAsync(new EquipmentDetailPage(new EquipmentDetailViewModel(equipment)));
+
+	    //    EquipmentListView.SelectedItem = null;
+	    //}
+    }
 }
