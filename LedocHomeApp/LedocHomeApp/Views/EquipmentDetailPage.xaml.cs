@@ -20,6 +20,18 @@ namespace LedocHomeApp.Views
 
 		    BindingContext = this.viewModel = viewModel;
         }
+
+	    async void OnEquipmentSelected(object sender, SelectedItemChangedEventArgs args)
+	    {
+	        var equipment = args.SelectedItem as Equipment;
+	        if (equipment == null)
+	            return;
+
+	        await Navigation.PushAsync(new EditEquipmentPage(new EditEquipmentViewModel(equipment)));
+
+	        //EquipmentListView.SelectedItem = null;
+	    }
+
         public EquipmentDetailPage()
         {
             InitializeComponent();
@@ -34,18 +46,7 @@ namespace LedocHomeApp.Views
 
 	    async void EditEquipment_Clicked(object sender, EventArgs e)
 	    {
-	        await Navigation.PushModalAsync(new EditEquipmentPage(new EditEquipmentViewModel()));
-	    }
-
-	    async void OnEquipmentSelected(object sender, SelectedItemChangedEventArgs args)
-	    {
-	        var equipment = args.SelectedItem as Equipment;
-	        if (equipment == null)
-	            return;
-
-	        await Navigation.PushAsync(new EquipmentDetailPage(new EquipmentDetailViewModel(equipment)));
-
-	        //EquipmentListView.SelectedItem = null;
+	        await Navigation.PushModalAsync(new NavigationPage(new EditEquipmentPage()));
 	    }
     }
 }
