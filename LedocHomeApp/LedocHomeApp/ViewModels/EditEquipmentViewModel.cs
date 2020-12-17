@@ -13,16 +13,16 @@ namespace LedocHomeApp.ViewModels
 
         public Equipment Equipment { get; set; }
 
-        //public ICommand EditCommand
-        //{
-        //    get
-        //    {
-        //        return new Command(async () =>
-        //        {
-        //            await _equipmentViewModel.PutEquipmentTask(Equipment);
-        //        });
-        //    }
-        //}
+        public ICommand EditCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await _equipmentViewModel.PutEquipmentTask(Equipment);
+                });
+            }
+        }
 
         public EditEquipmentViewModel(Equipment equipment = null)
         {

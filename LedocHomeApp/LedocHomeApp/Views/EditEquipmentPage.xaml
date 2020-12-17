@@ -7,17 +7,17 @@
 
     <StackLayout>
         <Label Text="Name" FontSize="Medium"/>
-        <Entry Text="{Binding Equipment.Name}"/>
+        <Entry Text="{Binding Equipment.Name, Mode=TwoWay}"/>
         <Label Text="Make" FontSize="Medium"/>
-        <Entry Text="{Binding Equipment.Make}"/>
+        <Entry Text="{Binding Equipment.Make, Mode=TwoWay}"/>
         <Label Text="Mobile" FontSize="Medium"/>
-        <Entry Text="{Binding Equipment.Mobile}"/>
+        <Entry Text="{Binding Equipment.Mobile, Mode=TwoWay}"/>
         <Label Text="DateExpiration" FontSize="Medium"/>
-        <Entry Text="{Binding Equipment.DateExpiration}"/>
+        <Entry Text="{Binding Equipment.DateExpiration, Mode=TwoWay}"/>
         <Label Text="Responsible" FontSize="Medium"/>
-        <Entry Text="{Binding Equipment.Responsible}"/>
+        <Entry Text="{Binding Equipment.Responsible, Mode=TwoWay}"/>
         <Label Text="DateOfPurchase" FontSize="Medium"/>
-        <Entry Text="{Binding Equipment.DateOfPurchase}"/>
+        <Entry Text="{Binding Equipment.DateOfPurchase, Mode=TwoWay}"/>
 
         <Button Command="{Binding EditCommand}" Text="Edit Equipment"/>
     </StackLayout>

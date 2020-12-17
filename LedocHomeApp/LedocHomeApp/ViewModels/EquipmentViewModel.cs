@@ -80,8 +80,17 @@ namespace LedocHomeApp.ViewModels
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await client.PutAsync("https://restserviceledochome.azurewebsites.net/api/equipments/",
+            var response = await client.PutAsync("https://restserviceledochome.azurewebsites.net/api/equipments/" + equipment.EquipmentId,
                 content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Data edited successfully  " + response.RequestMessage);
+            }
+            else
+            {
+                Debug.WriteLine("An error occured while putting data    " + response.StatusCode);
+            }
         }
         //Equipment _selectedEquipment;
         //public Equipment SelectedEquipment
