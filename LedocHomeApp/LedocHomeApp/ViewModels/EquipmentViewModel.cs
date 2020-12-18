@@ -64,11 +64,11 @@ namespace LedocHomeApp.ViewModels
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine("Data saved successfully");
+                Debug.WriteLine("Data saved successfully" + response.RequestMessage);
             }
             else
             {
-                Debug.WriteLine("An error occured while posting data");
+                Debug.WriteLine("An error occured while posting data " + response.StatusCode);
             }
         }
 
@@ -85,29 +85,33 @@ namespace LedocHomeApp.ViewModels
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine("Data edited successfully  " + response.RequestMessage);
+                Debug.WriteLine("Data edited successfully " + response.RequestMessage);
             }
             else
             {
-                Debug.WriteLine("An error occured while putting data    " + response.StatusCode);
+                Debug.WriteLine("An error occured while updating data " + response.StatusCode);
             }
         }
-        //Equipment _selectedEquipment;
-        //public Equipment SelectedEquipment
-        //{
-        //    get
-        //    {
-        //        return _selectedEquipment;
-        //    }
-        //    set
-        //    {
-        //        _selectedEquipment = value;
-        //        if (value != null)
-        //        {
-        //            Navigation.PushAsync(new NewEquipmentPage(SelectedEquipment));
-        //        }
-        //        OnPropertyChanged();
-        //    }
-        //}
+
+        public async Task DeleteEquipmentTask(Equipment equipment)
+        {
+            var client = new HttpClient();
+
+            var json = JsonConvert.SerializeObject(equipment);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await client.DeleteAsync("https://restserviceledochome.azurewebsites.net/api/equipments/" + equipment.EquipmentId);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Data deleted successfully " + response.RequestMessage + response.StatusCode);
+            }
+            else
+            {
+                Debug.WriteLine("An error occured while deleting data " + response.StatusCode);
+            }
+        }
+      
     }
 }

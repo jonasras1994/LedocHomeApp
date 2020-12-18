@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:LedocHomeApp.ViewModels;assembly=LedocHomeApp"
              x:Class="LedocHomeApp.Views.EquipmentDetailPage"
              Title="{Binding Title}">
 
@@ -8,41 +9,30 @@
         <ToolbarItem Text="Edit Equipment" Clicked="EditEquipment_Clicked"></ToolbarItem>
     </ContentPage.ToolbarItems>
 
+    <ContentPage.BindingContext>
+        <viewModels:EquipmentDetailViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15" >
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Label Text="EquipmentId" FontSize="Medium"/>
-            <!--<ListView x:Name="EquipmentListView"
-                      ItemsSource="{Binding Equipment}"
-                      VerticalOptions="FillAndExpand"
-                      HasUnevenRows="True"
-                      ItemSelected="OnEquipmentSelected"
-                      IsPullToRefreshEnabled="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>-->
+            <Button Text="Delete Equipment" Command="{Binding DeleteCommand}"/>
                  <Label Text="{Binding Equipment.EquipmentId, Mode=TwoWay}" FontSize="Small"/>
                 <Label Text="Name" FontSize="Medium"/>
             <Label Text="{Binding Equipment.Name, Mode=TwoWay}" FontSize="Small"/>
-                <Label Text="Make" FontSize="Medium"/>
+                <Label Text="Make" FontSize="Medium"/>  
             <Label Text="{Binding Equipment.Make, Mode=TwoWay}" FontSize="Small"/>
                 <Label Text="Mobile" FontSize="Medium"/>
             <Label Text="{Binding Equipment.Mobile, Mode=TwoWay}" FontSize="Small"/>
                 <Label Text="Expiration date" FontSize="Medium"/>
-            <Label Text="{Binding Equipment.ExpirationDate, Mode=TwoWay}" FontSize="Small"/>
+            <Label Text="{Binding Equipment.DateExpiration, Mode=TwoWay}" FontSize="Small"/>
                 <Label Text="Responsible" FontSize="Medium"/>
             <Label Text="{Binding Equipment.Responsible, Mode=TwoWay}" FontSize="Small"/>
                 <Label Text="Date of purchase" FontSize="Medium"/>
             <Label Text="{Binding Equipment.DateOfPurchase, Mode=TwoWay}" FontSize="Small"/>
-                            <!--</StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-
 
         </StackLayout>
     </ContentPage.Content>
