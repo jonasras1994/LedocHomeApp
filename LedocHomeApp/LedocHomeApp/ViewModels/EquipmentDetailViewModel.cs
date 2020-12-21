@@ -23,6 +23,7 @@ public class EquipmentDetailViewModel : BaseViewModel
             Equipment = equipment;
         }
 
+        //Skal bruges for at lave bindingcontext i EquipmentDetailView.xaml
         public EquipmentDetailViewModel()
         {
             
@@ -36,10 +37,10 @@ public class EquipmentDetailViewModel : BaseViewModel
                 {
                     var equipment = new Equipment
                     {
+                        
                         EquipmentId = EquipmentId
-
                     };
-                    await _equipmentViewModel.DeleteEquipmentTask(equipment);
+                    await _equipmentViewModel.DeleteEquipmentTask(Equipment);
                 });
             }
         }
