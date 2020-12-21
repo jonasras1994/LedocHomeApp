@@ -44,21 +44,10 @@ namespace LedocHomeApp.Views
             BindingContext = viewModel;
         }
 
-	    public async void EditEquipment()
+	    public async void EditEquipment_Clicked(object sender, EventArgs e)
 	    {
 	        Equipment equipment = null;
 	        await this.Navigation.PushAsync(new EditEquipmentPage(new EditEquipmentViewModel(viewModel.Equipment)));
-	    }
-
-	    //public async void DeleteEquipment_Clicked(object sender, EventArgs eventArgs)
-	    //{
-	    //    await this.Navigation.RemovePage(new EquipmentDetailPage(new EquipmentDetailViewModel(viewModel.Equipment)));
-	    //}
-
-	    async void EditEquipment_Clicked(object sender, EventArgs e)
-	    {
-            EditEquipment();
-            //await Navigation.PushModalAsync(new NavigationPage(new EditEquipmentPage()));
-	    }
+	    }  
     }
 }
